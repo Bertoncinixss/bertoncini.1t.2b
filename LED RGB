@@ -1,0 +1,30 @@
+// Pinos do LED RGB
+const int pinVermelho = 3;
+const int pinVerde = 5;
+const int pinAzul = 6;
+
+void setup() {
+  // Configura os pinos como saída
+  pinMode(pinVermelho, OUTPUT);
+  pinMode(pinVerde, OUTPUT);
+  pinMode(pinAzul, OUTPUT);
+}
+
+void loop() {
+  // Percorre todas as combinações de cores
+  for (int r = 0; r <= 255; r += 51) { // Varia de 0 a 255 em passos de 51
+    for (int g = 0; g <= 255; g += 51) {
+      for (int b = 0; b <= 255; b += 51) {
+        acenderCor(r, g, b);
+        delay(300); // Espera meio segundo para cada cor
+      }
+    }
+  }
+}
+
+// Função para acender o LED com a cor desejada
+void acenderCor(int vermelho, int verde, int azul) {
+  analogWrite(pinVermelho, vermelho);
+  analogWrite(pinVerde, verde);
+  analogWrite(pinAzul, azul);
+}
